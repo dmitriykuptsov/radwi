@@ -79,8 +79,9 @@ MS_MPPE_SEND_KEY                           = 0x10;
 MIKROTIK_RECV_LIMIT                        = 0x1;
 MIKROTIK_SEND_LIMIT                        = 0x2;
 MIKROTIK_TOTAL_LIMIT                       = 0x11;
-MIKROTIK_TOTAL_GIGA_LIMIT                  = 0x12;
+MIKROTIK_TOTAL_GIGAWORDS_LIMIT             = 0x12;
 MIKROTIK_RATE_LIMIT                        = 0x8;
+MIKROTIK_RECV_GIGAWORDS_LIMIT              = 0x0e;
 
 
 class MikroTikAttribute():

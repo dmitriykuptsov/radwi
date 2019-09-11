@@ -765,17 +765,15 @@ class PacketProcessor():
 
 		mikrotik_total_limit_giga_attribute = radius.MikroTikAttribute();
 		mikrotik_total_limit_giga_attribute.set_value(struct.pack(">I", int(bytes_remaining / (4 * 1024 * 1024))));
-		mikrotik_total_limit_giga_attribute.set_type(radius.MIKROTIK_TOTAL_GIGA_LIMIT);
-
-		"""
+		mikrotik_total_limit_giga_attribute.set_type(radius.MIKROTIK_TOTAL_GIGAWORDS_LIMIT);
+	
 		mikrotik_recv_limit_attribute = radius.MikroTikAttribute();
 		mikrotik_recv_limit_attribute.set_value(struct.pack(">I", int(bytes_remaining % (4 * 1024 * 1024))));
 		mikrotik_recv_limit_attribute.set_type(radius.MIKROTIK_RECV_LIMIT);
 
 		mikrotik_recv_limit_giga_attribute = radius.MikroTikAttribute();
 		mikrotik_recv_limit_giga_attribute.set_value(struct.pack(">I", int(bytes_remaining / (4 * 1024 * 1024))));
-		mikrotik_recv_limit_giga_attribute.set_type(radius.MIKROTIK_RECV_GIGA_LIMIT);
-		"""
+		mikrotik_recv_limit_giga_attribute.set_type(radius.MIKROTIK_RECV_GIGAWORDS_LIMIT);
 		
 		conn_speed_attribute = (
 			radius.RADIUSVendorSpecificAttribute(
@@ -790,31 +788,21 @@ class PacketProcessor():
 				radius.RADIUS_MIKROTIK_VENDOR_ID,
 				mikrotik_total_limit_attribute.get_bytes()));
 		radius_success.add_attribute(total_limit_attribute);
-
-		"""
-		recv_limit_attribute = (
-			radius.RADIUSVendorSpecificAttribute(
-				radius.RADIUS_VENDOR_SPECIFIC_ATTRIBUTE, 
-				radius.RADIUS_MIKROTIK_VENDOR_ID,
-				mikrotik_recv_limit_attribute.get_bytes()));
-		radius_success.add_attribute(recv_limit_attribute);
-		"""
-
+	
 		total_limit_giga_attribute = (
 			radius.RADIUSVendorSpecificAttribute(
 				radius.RADIUS_VENDOR_SPECIFIC_ATTRIBUTE, 
 				radius.RADIUS_MIKROTIK_VENDOR_ID,
 				mikrotik_total_limit_giga_attribute.get_bytes()));
 		radius_success.add_attribute(total_limit_giga_attribute);
-		
-		"""
+
 		recv_limit_giga_attribute = (
 			radius.RADIUSVendorSpecificAttribute(
 				radius.RADIUS_VENDOR_SPECIFIC_ATTRIBUTE, 
 				radius.RADIUS_MIKROTIK_VENDOR_ID,
 				mikrotik_recv_limit_giga_attribute.get_bytes()));
-		radius_success.add_attribute(recv_limit_giga_attribute);
-		"""
+		#radius_success.add_attribute(recv_limit_giga_attribute);
+
 
 		send_key_attribute = (
 			radius.RADIUSVendorSpecificAttribute(

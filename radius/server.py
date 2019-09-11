@@ -67,7 +67,7 @@ database = db.Database(config);
 def authentication_loop(socket):
 	"""
 	Runs the authentication loop. This is the main loop 
-	where TLS packets are being processed and state is maintained
+	where TLS packets are processed and state is maintained
 	"""
 	certificate = certs.X509v3Certificate.load(config["security"]["certificate_path"]);
 	private_key = certs.RSAPrivateKey.load(config["security"]["private_key"]);
