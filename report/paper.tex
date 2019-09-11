@@ -1,0 +1,73 @@
+\documentclass[conference,10pt,letter]{IEEEtran}
+
+\usepackage{url}
+\usepackage{amssymb,amsthm}
+\usepackage{graphicx,color}
+
+%\usepackage{balance}
+
+\usepackage{cite}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{color, colortbl}
+\usepackage{times}
+\usepackage{caption}
+\usepackage{rotating}
+\usepackage{subcaption}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{example}{Example}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+
+\newcommand{\XXXnote}[1]{{\bf\color{red} XXX: #1}}
+\newcommand{\YYYnote}[1]{{\bf\color{red} YYY: #1}}
+\newcommand*{\etal}{{\it et al.}}
+
+\newcommand{\eat}[1]{}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\im}{\item}
+\newcommand{\eg}{{\it e.g.}\xspace}
+\newcommand{\ie}{{\it i.e.}\xspace}
+\newcommand{\etc}{{\it etc.}\xspace}
+
+\def\P{\mathop{\mathsf{P}}}
+\def\E{\mathop{\mathsf{E}}}
+
+\begin{document}
+\sloppy
+\title{RadWi: Experimenting with WPA-2 enterprise and RADIUS}
+\maketitle
+\begin{abstract}
+In this document we describe how to build a simple billing platform
+for WiFi using open-source tools. In our architecture we rely heavily on 
+WPA-2 Enterprise stack of protocols and use our custom python-based implementation of RADIUS 
+for authentication, authorization, and accounting purposes. To implement the billing part, 
+we created custom software. The billing works as follows: 
+(i) users receive or purchase vouchers which specify the amount of traffic 
+included, and, of course, username and password; 
+(ii) prior to distribution of vouchers the operator generates previously 
+mentioned information (using custom tool) and stores it in the database; 
+(iii) the users can connect to any Radwi 
+WiFi network at any time and can freely use the Internet as long as 
+balance (amount of traffic unused) is positive; and finally, (iv) 
+at certain time quanta the Radius server updates the database and reduces the 
+balance of the client by amount of traffic which was used. We foresee that this 
+business model is viable and can be used in many public places. Although
+the system can be monetized, our primary goal is experimentation and hands 
+on experience in building secure Enterprise WiFi networks.
+\end{abstract}
+\input intro.tex
+\input background.tex
+\input architecture.tex
+\input hardware.tex
+\input experimental.tex
+\input conclusions.tex
+%\balance
+\bibliographystyle{abbrv}
+\bibliography{mybib}
+
+\end{document}
+
