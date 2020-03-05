@@ -71,7 +71,7 @@ class Database():
 		"""
 		if not re.match("[a-zA-Z0-9]{5,20}", username):
 			return False;
-		query = """SELECT b.balance / t.price_per_megabyte AS bytes_remaining, t.conn_speed_in_kbytes_per_second FROM rad_users u 
+		query = """SELECT b.balance / t.price_per_megabyte * 1024 * 1024 AS bytes_remaining, t.conn_speed_in_kbytes_per_second FROM rad_users u 
 					INNER JOIN balance b ON u.id = b.user_id 
 					INNER JOIN tariff t ON b.tariff_id = t.id 
 					WHERE u.username = %s  AND u.blocked <> TRUE
